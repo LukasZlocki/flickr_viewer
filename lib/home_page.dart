@@ -18,6 +18,30 @@ class _HomePageState extends State<HomePage> {
           title: Text('Flickr viewer'),
           elevation: 3,
         ),
+      body: const TagForm(),
+      );
+  }
+
+}
+
+class TagForm extends StatelessWidget {
+  const TagForm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const <Widget>[
+        Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter tag'
+              )
+            ),
+          ),
+      ],
     );
   }
 
