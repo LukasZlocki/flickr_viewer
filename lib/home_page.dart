@@ -18,10 +18,19 @@ class _HomePageState extends State<HomePage> {
           title: Text('Flickr viewer'),
           elevation: 3,
         ),
-      body: const TagForm(),
+      body: Column(
+        children: [
+          const TagForm(),
+        ],
+      )
       );
   }
 
+}
+
+// search pictures
+void Search() {
+// ToDO: code searching flickr resources here
 }
 
 class TagForm extends StatelessWidget {
@@ -30,7 +39,7 @@ class TagForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: const <Widget>[
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
@@ -41,6 +50,10 @@ class TagForm extends StatelessWidget {
               )
             ),
           ),
+      SizedBox(height: 20),
+      ElevatedButton(
+          onPressed: Search,
+          child: Text('search'))
       ],
     );
   }
