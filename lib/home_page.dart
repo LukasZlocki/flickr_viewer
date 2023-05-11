@@ -28,6 +28,18 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
               onPressed: Search,
               child: Text('Search')),
+          ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: linksToPics.length,
+              itemBuilder: (context, index) {
+                final link = linksToPics[index];
+                final link2 = link['link'];
+              return ListTile(
+                title: Text(link2),
+              );
+          },
+          ),
         ],
       )
       );
@@ -73,16 +85,6 @@ class TagForm extends StatelessWidget {
               )
             ),
           ),
-     // ElevatedButton(
-     //     onPressed: Search,
-     //     child: Text('search')),
-         // ListView.builder(
-             // itemCount: linksToPics.length,
-              //itemBuilder: (context, index) {
-               // final item = linksToPics[index];
-                //final link = item['link']
-           // return ListTile();
-          //}),
       ],
     );
   }
