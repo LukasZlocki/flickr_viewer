@@ -24,37 +24,30 @@ class _HomePageState extends State<HomePage> {
           title: Text('Flickr viewer'),
           elevation: 3,
         ),
-      body: Column(
-        children: [
-          TagForm(),
-          SizedBox(height: 20),
-          ElevatedButton(
-              onPressed: Search,
-              child: Text('Search')),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => ThumbnailScreen(tag: tag, linksToPics: linksToPics,))));
-              },
-              child: Text("Switch Page")),
-          ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: linksToPics.length,
-              itemBuilder: (context, index) {
-                final link = linksToPics[index];
-                final link2 = link['link'];
-              return ListTile(
-                title: Text(link2),
-              );
-          },
-          ),
-        ],
-      )
-      );
+        body: Column(
+          children: [
+            TagForm(),
+            SizedBox(height: 20),
+            ElevatedButton(onPressed: Search, child: Text('Search')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => ThumbnailScreen(
+                                tag: tag,
+                                urlImgList: urlImgList,
+                              ))));
+                },
+                child: Text("Switch Page")),
+          ],
+        ));
   }
 
-  // list with links to pics from uri
+  // list with json data with links to pics from uri
   List<dynamic> linksToPics = [];
+  // list with uri links to pics
+  List<String> urlImgList = [];
 
 // https://api.flickr.com/services/feeds/photos_public.gne?tags=${this.tags}&format=json&nojsoncallback=1
   String URL = "https://api.flickr.com/services/feeds/photos_public.gne?tags=face&format=json&nojsoncallback=1";
@@ -71,11 +64,20 @@ class _HomePageState extends State<HomePage> {
       linksToPics = json['items'];
     });
     print('fetching completed');
+
+    extract(linksToPics);
   }
 
+  // extracting links to images from list of jsons
+  void extract(List<dynamic> listToExtract) {
+    for (var i = 0; i < listToExtract.length; i++){
+      final data = linksToPics[i];
+      final link = data['link'];
+      urlImgList.add(link.toString());
+    }
+    print('rewriting list to new list with string url, completed.');
+  }
 }
-
-
 
 
 class TagForm extends StatelessWidget {

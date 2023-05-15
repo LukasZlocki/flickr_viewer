@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 
 class ThumbnailScreen extends StatefulWidget {
   const ThumbnailScreen(
-      {super.key, required this.tag, required this.linksToPics});
+      {super.key, required this.tag, required this.urlImgList});
 
   final String tag;
-  final List<dynamic> linksToPics;
+  //final List<dynamic> linksToPics;
+  final List<String> urlImgList;
 
   @override
   State<ThumbnailScreen> createState() => _ThumbnailScreenState();
@@ -32,12 +33,12 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
             ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: widget.linksToPics.length,
+              itemCount: widget.urlImgList.length,
               itemBuilder: (context, index) {
-                final link = widget.linksToPics[index];
-                final link2 = link['link'];
+                final link = widget.urlImgList[index];
+                //final link2 = link['link'];
                 return ListTile(
-                  title: Text(link2),
+                  title: Text(link),
                 );
               },
             ),
@@ -45,5 +46,8 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
         ),
       ),
     );
+  }
+  void ShowIt() {
+
   }
 }
