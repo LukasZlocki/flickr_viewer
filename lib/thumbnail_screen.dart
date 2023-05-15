@@ -18,10 +18,10 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "route",
+      title: "thumbnails",
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Thumbnails"),
+          title: Text("Thumbnails result for: ${widget.tag}"),
         ),
         body: Column(
           children: [
@@ -46,8 +46,5 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
         ),
       ),
     );
-  }
-  void ShowIt() {
-
   }
 }

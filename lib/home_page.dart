@@ -16,9 +16,9 @@ class _HomePageState extends State<HomePage> {
 
   // controller to retrive data from txt field
   final txtController = TextEditingController();
-
   // tag with user value
   String tag = "face";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
