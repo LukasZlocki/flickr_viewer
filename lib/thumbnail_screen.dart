@@ -24,7 +24,7 @@ class ThumbnailScreen extends StatefulWidget {
           title: Text("Thumbnails"),
         ),
         body: Center(
-          child: ElevatedButton(git s
+          child: ElevatedButton(
               child: Text("Back main page"),
               onPressed: () {
                 Navigator.pop(context);
