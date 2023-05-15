@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flickr_viewer/thumbnail_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -28,6 +29,11 @@ class _HomePageState extends State<HomePage> {
           ElevatedButton(
               onPressed: Search,
               child: Text('Search')),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => ThumbnailScreen())));
+              },
+              child: Text("Switch Page")),
           ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -66,6 +72,7 @@ class _HomePageState extends State<HomePage> {
   }
 
 }
+
 
 
 
