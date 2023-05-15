@@ -17,23 +17,24 @@ class ThumbnailScreen extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
-  return MaterialApp(
-  title: "route",
-  home: Scaffold(
-  appBar: AppBar(title: Text("Thumbnails"),),
-  body: Center(
-  child: ElevatedButton(
-  child: Text("Back main page"),
-  onPressed: () {
-  Navigator.pop(context);
-  }
-  ),
-  ),
-  ),
-  );
+    return MaterialApp(
+      title: "route",
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Thumbnails"),
+        ),
+        body: Center(
+          child: ElevatedButton(git s
+              child: Text("Back main page"),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
+        ),
+      ),
+    );
   }
 
-    // list with links to pics from uri
+  // list with links to pics from uri
     List<dynamic> linksToPics = [];
 
     void Search(String tag) async {
