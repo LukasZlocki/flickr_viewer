@@ -1,20 +1,20 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ThumbnailScreen extends StatefulWidget {
-  const ThumbnailScreen({super.key, required this.tag});
+  const ThumbnailScreen(
+      {super.key, required this.tag, required this.linksToPics});
 
   final String tag;
+  final List<dynamic> linksToPics;
 
   @override
   State<ThumbnailScreen> createState() => _ThumbnailScreenState();
 }
 
-  class _ThumbnailScreenState extends State<ThumbnailScreen> {
-
+class _ThumbnailScreenState extends State<ThumbnailScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,34 +23,28 @@ class ThumbnailScreen extends StatefulWidget {
         appBar: AppBar(
           title: Text("Thumbnails"),
         ),
-        body: Center(
-          child: ElevatedButton(
-              child: Text("Back main page"),
-              onPressed: () {
-                Navigator.pop(context);
-              }),
+        body: Column(
+          children: [
+            ElevatedButton(
+                child: Text("<- Back main page"),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: widget.linksToPics.length,
+              itemBuilder: (context, index) {
+                final link = widget.linksToPics[index];
+                final link2 = link['link'];
+                return ListTile(
+                  title: Text(link2),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
   }
-
-  // list with links to pics from uri
-    List<dynamic> linksToPics = [];
-
-    void Search(String tag) async {
-      print('fetching data from flickr '+ tag);
-      const URL = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=face&format=json&nojsoncallback=1';
-      final uri = Uri.parse(URL);
-      // ToDO: code searching flickr resources here
-      final response = await http.get(uri);
-      final body = response.body;
-      final json = jsonDecode(body);
-      setState(() {
-        linksToPics = json['items'];
-      });
-      print('fetching completed');
-    }
-
-  }
-
-
+}

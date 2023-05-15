@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
 
   // tag with user value
   String tag = "face";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +33,7 @@ class _HomePageState extends State<HomePage> {
               child: Text('Search')),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => ThumbnailScreen(tag: tag,))));
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => ThumbnailScreen(tag: tag, linksToPics: linksToPics,))));
               },
               child: Text("Switch Page")),
           ListView.builder(
