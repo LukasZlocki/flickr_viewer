@@ -14,6 +14,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  // controller to retrive data from txt field
+  final txtController = TextEditingController();
+
   // tag with user value
   String tag = "face";
   @override
@@ -26,7 +29,11 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
-            TagForm(),
+            TextField(
+                controller: txtController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Enter tag')),
             SizedBox(height: 20),
             ElevatedButton(onPressed: Search, child: Text('Search')),
             ElevatedButton(
@@ -76,27 +83,5 @@ class _HomePageState extends State<HomePage> {
       urlImgList.add(link.toString());
     }
     print('rewriting list to new list with string url, completed.');
-  }
-}
-
-
-class TagForm extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: const <Widget>[
-        Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter tag'
-              )
-            ),
-          ),
-      ],
-    );
   }
 }
