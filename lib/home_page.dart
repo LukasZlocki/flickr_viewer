@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'TestScreen.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: ((context) => ThumbnailScreen(
+                          builder: ((context) => TestScreen(
                                 tag: txtController.text,
                                 urlImgList: urlImgList,
                               ))));
