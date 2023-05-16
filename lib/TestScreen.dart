@@ -9,7 +9,6 @@ class TestScreen extends StatelessWidget {
 
   final String title = "testing screen";
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,20 +17,27 @@ class TestScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body:ImagePresenter(),
-      ),);
-
+        body: ImagePresenter(imgs: urlImgList),
+      ),
+    );
   }
 }
 
 class ImagePresenter extends StatelessWidget {
+  const ImagePresenter({super.key, required this.imgs});
+
+  final List<String> imgs;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Hello'
-      ),
+    return GridView.count(
+      crossAxisCount: 1,
+      children: List.generate(
+          imgs.length,
+          (index) => Center(
+                  child: GridTile(
+                child: Image.network(imgs[index]),
+              ))),
     );
   }
-
 }
