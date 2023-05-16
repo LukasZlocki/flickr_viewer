@@ -17,14 +17,14 @@ class TestScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: ImagePresenter(imgs: urlImgList),
+        body: ImageButton(imgs: urlImgList),
       ),
     );
   }
 }
 
-class ImagePresenter extends StatelessWidget {
-  const ImagePresenter({super.key, required this.imgs});
+class ImageButton extends StatelessWidget {
+  const ImageButton({super.key, required this.imgs});
 
   final List<String> imgs;
 
@@ -34,9 +34,12 @@ class ImagePresenter extends StatelessWidget {
       crossAxisCount: 1,
       children: List.generate(
           imgs.length,
-          (index) => Center(
-                  child: GridTile(
-                child: Image.network(imgs[index]),
+              (index) => Center(
+              child: GridTile(
+                child: TextButton(
+                  onPressed: () {},
+                  child: Image.network(imgs[index]),
+                ),
               ))),
     );
   }
