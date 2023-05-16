@@ -15,6 +15,57 @@ class ThumbnailScreen extends StatefulWidget {
 }
 
 class _ThumbnailScreenState extends State<ThumbnailScreen> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Thumbnails result for: ${widget.tag}"),
+      ),
+      body: Center(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+                itemCount: widget.urlImgList.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisExtent: 10
+                ), itemBuilder: (context, index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                        image: DecorationImage(
+                            image: NetworkImage(widget.urlImgList[index]),
+                            fit: BoxFit.cover)),
+                  );
+                })
+        ),
+      ),
+    );
+  }
+}
+
+
+
+            /*
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: widget.urlImgList.length,
+              itemBuilder: (context, index) {
+                final link = widget.urlImgList[index];
+                //final link2 = link['link'];
+                return ListTile(
+                  title: Text(link),
+                );
+              },
+            ),
+            */
+
+//// pozostalosci
+/*
+class _ThumbnailScreenState extends State<ThumbnailScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,12 +95,6 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
               },
             ),
             */
-
-           // Image.network('https://live.staticflickr.com/65535/52901595559_de9fd1a8dc_m.jpg'),
-            Image.network(widget.urlImgList[5]),
-          ],
-        ),
-      ),
-    );
-  }
-}
+            //Image.network(widget.urlImgList[5]),
+            GridView.builder(
+ */
