@@ -1,3 +1,4 @@
+import 'package:flickr_viewer/image_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,13 @@ class ImageButton extends StatelessWidget {
               (index) => Center(
               child: GridTile(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => ImageScreen(urlImg: imgs[index])
+                    )));
+                  },
                   child: Image.network(imgs[index]),
                 ),
               ))),
