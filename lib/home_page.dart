@@ -87,7 +87,8 @@ class _HomePageState extends State<HomePage> {
   void extract(List<dynamic> listToExtract) {
     for (var i = 0; i < listToExtract.length; i++){
       final data = linksToPics[i];
-      final link = data['link'];
+      final link_with_whiteNoise = data['media'];
+      final link = link_with_whiteNoise['m'];
       urlImgList.add(link.toString());
     }
     print('rewriting list to new list with string url, completed.');

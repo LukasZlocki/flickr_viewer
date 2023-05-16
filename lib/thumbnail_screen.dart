@@ -30,6 +30,7 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 }),
+            /*
             ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -42,6 +43,10 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
                 );
               },
             ),
+            */
+
+           // Image.network('https://live.staticflickr.com/65535/52901595559_de9fd1a8dc_m.jpg'),
+            Image.network(widget.urlImgList[5]),
           ],
         ),
       ),
