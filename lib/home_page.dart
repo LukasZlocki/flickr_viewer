@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   // controller to retrive data from txt field
   final txtController = TextEditingController();
   // tag with user value
-  String tag = "face";
+  //String tag = "face";
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +36,17 @@ class _HomePageState extends State<HomePage> {
                     border: OutlineInputBorder(),
                     hintText: 'Enter tag')),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: Search, child: Text('Search')),
+            ElevatedButton(onPressed: () {
+              Search(txtController.text);
+              },
+                child: Text('Search')),
             ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: ((context) => ThumbnailScreen(
-                                tag: tag,
+                                tag: txtController.text,
                                 urlImgList: urlImgList,
                               ))));
                 },
@@ -57,13 +61,17 @@ class _HomePageState extends State<HomePage> {
   List<String> urlImgList = [];
 
 // https://api.flickr.com/services/feeds/photos_public.gne?tags=${this.tags}&format=json&nojsoncallback=1
-  String URL = "https://api.flickr.com/services/feeds/photos_public.gne?tags=face&format=json&nojsoncallback=1";
+ // String URL = "https://api.flickr.com/services/feeds/photos_public.gne?tags=face&format=json&nojsoncallback=1";
 // search pictures
-  void Search() async {
+  void Search(String tag) async {
+    String Url_part1 = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=';
+    String Url_part2 = '&format=json&nojsoncallback=1';
+    String UrlFinal = Url_part1 + tag + Url_part2;
+
     print('fetching data from flickr');
-    const URL = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=face&format=json&nojsoncallback=1';
-    final uri = Uri.parse(URL);
-    // ToDO: code searching flickr resources here
+
+    final uri = Uri.parse(UrlFinal);
+    // code searching flickr resources
     final response = await http.get(uri);
     final body = response.body;
     final json = jsonDecode(body);
@@ -75,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     extract(linksToPics);
   }
 
-  // extracting links to images from list of jsons
+  // extracting links to images from list of jsons to List of links
   void extract(List<dynamic> listToExtract) {
     for (var i = 0; i < listToExtract.length; i++){
       final data = linksToPics[i];
