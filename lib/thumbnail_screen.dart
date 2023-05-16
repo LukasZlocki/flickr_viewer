@@ -22,31 +22,31 @@ class _ThumbnailScreenState extends State<ThumbnailScreen> {
       appBar: AppBar(
         title: Text("Thumbnails result for: ${widget.tag}"),
       ),
-      body: Center(
-        child: Padding(
-            padding: const EdgeInsets.all(8.0),
+      body: Padding(
+        padding: const EdgeInsets.all(40.0),
             child: GridView.builder(
-                itemCount: widget.urlImgList.length,
+                itemCount: widget.urlImgList.length, //widget.urlImgList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                    crossAxisCount: 1,
                     crossAxisSpacing: 10,
+                    childAspectRatio: (1.0),
                     mainAxisExtent: 10
-                ), itemBuilder: (context, index) {
+                ), itemBuilder: (BuildContext contex, int index) {
                   return Container(
+                    alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
                             image: NetworkImage(widget.urlImgList[index]),
-                            fit: BoxFit.cover)),
+                            )),
                   );
                 })
-        ),
       ),
     );
   }
 }
 
-
+// ************************************************
 
             /*
             ListView.builder(
