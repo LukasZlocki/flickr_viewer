@@ -25,7 +25,7 @@ class TestScreen extends StatelessWidget {
                 ImageButton(imgs: urlImgList),
             ),
             ElevatedButton(
-                child: Text("<- Back main page"),
+                child: Text("Back main page"),
                 onPressed: () {
                   Navigator.pop(context);
                 }),

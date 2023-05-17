@@ -24,7 +24,7 @@ class ImageScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
     },
-              child: Text("Back to thumbnails"),
+              child: Text("Back to thumbnails page"),
     ),
           ],
       ),)
