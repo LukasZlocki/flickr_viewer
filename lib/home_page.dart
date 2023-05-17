@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: ((context) => TestScreen(
+                          builder: ((context) => ThumbnailScreen(
                                 tag: txtController.text,
                                 urlImgList: urlImgList,
                               ))));
