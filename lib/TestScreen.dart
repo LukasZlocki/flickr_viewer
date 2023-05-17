@@ -18,7 +18,20 @@ class TestScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: ImageButton(imgs: urlImgList),
+        body: Column(
+          children: <Widget>[
+            Expanded(
+                child:
+                ImageButton(imgs: urlImgList),
+            ),
+            ElevatedButton(
+                child: Text("<- Back main page"),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+            //ImageButton(imgs: urlImgList),
+          ],
+        ),
       ),
     );
   }
@@ -51,3 +64,4 @@ class ImageButton extends StatelessWidget {
     );
   }
 }
+
