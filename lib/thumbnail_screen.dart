@@ -1,9 +1,9 @@
 import 'package:flickr_viewer/image_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ThumbnailScreen extends StatelessWidget {
-  const ThumbnailScreen({super.key, required this.tag, required this.urlImgList});
+  const ThumbnailScreen(
+      {super.key, required this.tag, required this.urlImgList});
 
   final String tag;
   final List<String> urlImgList;
@@ -21,11 +21,10 @@ class ThumbnailScreen extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Expanded(
-              child:
-              ImageButton(imgs: urlImgList),
+              child: ImageButton(imgs: urlImgList),
             ),
             ElevatedButton(
-                child: Text("Back main page"),
+                child: const Text("Back main page"),
                 onPressed: () {
                   Navigator.pop(context);
                 }),
@@ -48,22 +47,20 @@ class ImageButton extends StatelessWidget {
       crossAxisCount: 1,
       children: List.generate(
           imgs.length,
-              (index) =>
-              Center(
+          (index) => Center(
                   child: GridTile(
-                    child: TextButton(
-                      onPressed: () {
-                        String urlBigImg = ConvertLinkToBigImgUrl(imgs[index]);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) =>
-                                    ImageScreen(urlImg: urlBigImg)
-                                )));
-                      },
-                      child: Image.network(imgs[index]),
-                    ),
-                  ))),
+                child: TextButton(
+                  onPressed: () {
+                    String urlBigImg = ConvertLinkToBigImgUrl(imgs[index]);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) =>
+                                ImageScreen(urlImg: urlBigImg))));
+                  },
+                  child: Image.network(imgs[index]),
+                ),
+              ))),
     );
   }
 

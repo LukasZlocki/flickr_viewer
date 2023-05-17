@@ -1,5 +1,4 @@
 import 'package:flickr_viewer/image_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatelessWidget {
@@ -21,8 +20,7 @@ class TestScreen extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Expanded(
-                child:
-                ImageButton(imgs: urlImgList),
+              child: ImageButton(imgs: urlImgList),
             ),
             ElevatedButton(
                 child: Text("Back main page"),
@@ -48,22 +46,20 @@ class ImageButton extends StatelessWidget {
       crossAxisCount: 1,
       children: List.generate(
           imgs.length,
-              (index) =>
-              Center(
+          (index) => Center(
                   child: GridTile(
-                    child: TextButton(
-                      onPressed: () {
-                        String urlBigImg = ConvertLinkToBigImgUrl(imgs[index]);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) =>
-                                    ImageScreen(urlImg: urlBigImg)
-                                )));
-                      },
-                      child: Image.network(imgs[index]),
-                    ),
-                  ))),
+                child: TextButton(
+                  onPressed: () {
+                    String urlBigImg = ConvertLinkToBigImgUrl(imgs[index]);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) =>
+                                ImageScreen(urlImg: urlBigImg))));
+                  },
+                  child: Image.network(imgs[index]),
+                ),
+              ))),
     );
   }
 
@@ -74,4 +70,3 @@ class ImageButton extends StatelessWidget {
     return _urlBigImg;
   }
 }
-

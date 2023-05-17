@@ -1,11 +1,7 @@
 import 'dart:convert';
-
 import 'package:flickr_viewer/thumbnail_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
-import 'TestScreen.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -16,9 +12,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   // controller to retrive data from txt field
   final txtController = TextEditingController();
+
   // tag with user value
   //String tag = "face";
 
@@ -35,12 +31,12 @@ class _HomePageState extends State<HomePage> {
             TextField(
                 controller: txtController,
                 decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Enter tag')),
+                    border: OutlineInputBorder(), hintText: 'Enter tag')),
             SizedBox(height: 20),
-            ElevatedButton(onPressed: () {
-              Search(txtController.text);
-              },
+            ElevatedButton(
+                onPressed: () {
+                  Search(txtController.text);
+                },
                 child: Text('Search')),
             ElevatedButton(
                 onPressed: () {
@@ -62,13 +58,11 @@ class _HomePageState extends State<HomePage> {
   // list with uri links to pics
   List<String> urlImgList = [];
 
-// https://api.flickr.com/services/feeds/photos_public.gne?tags=${this.tags}&format=json&nojsoncallback=1
- // String URL = "https://api.flickr.com/services/feeds/photos_public.gne?tags=face&format=json&nojsoncallback=1";
 // search pictures
   void Search(String tag) async {
-    String Url_part1 = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=';
-    String Url_part2 = '&format=json&nojsoncallback=1';
-    String UrlFinal = Url_part1 + tag + Url_part2;
+    String UrlPart1 = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=';
+    String UrlPart2 = '&format=json&nojsoncallback=1';
+    String UrlFinal = UrlPart1 + tag + UrlPart2;
 
     print('fetching data from flickr');
 
@@ -87,10 +81,10 @@ class _HomePageState extends State<HomePage> {
 
   // extracting links to images from list of jsons to List of links
   void extract(List<dynamic> listToExtract) {
-    for (var i = 0; i < listToExtract.length; i++){
+    for (var i = 0; i < listToExtract.length; i++) {
       final data = linksToPics[i];
-      final link_with_whiteNoise = data['media'];
-      final link = link_with_whiteNoise['m'];
+      final linkWithWhiteNoise = data['media'];
+      final link = linkWithWhiteNoise['m'];
       urlImgList.add(link.toString());
     }
     print('rewriting list to new list with string url, completed.');
