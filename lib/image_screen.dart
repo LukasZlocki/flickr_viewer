@@ -17,8 +17,17 @@ class ImageScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: Image.network(urlImg),
-      ),
+        body: Column(
+          children: [
+            Image.network(urlImg),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+    },
+              child: Text("Back to thumbnails"),
+    ),
+          ],
+      ),)
     );
   }
 }
