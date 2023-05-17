@@ -8,7 +8,7 @@ class ThumbnailScreen extends StatelessWidget {
   final String tag;
   final List<String> urlImgList;
 
-  final String title = "testing screen";
+  final String title = "Thumbnails: ";
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ThumbnailScreen extends StatelessWidget {
       title: "Test screen",
       home: Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Text(title + tag),
         ),
         body: Column(
           children: <Widget>[
