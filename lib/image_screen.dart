@@ -8,7 +8,6 @@ class ImageScreen extends StatelessWidget {
   final String urlImg;
 
   final String title = "image screen";
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
