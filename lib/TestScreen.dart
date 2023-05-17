@@ -48,20 +48,30 @@ class ImageButton extends StatelessWidget {
       crossAxisCount: 1,
       children: List.generate(
           imgs.length,
-              (index) => Center(
-              child: GridTile(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => ImageScreen(urlImg: imgs[index])
-                    )));
-                  },
-                  child: Image.network(imgs[index]),
-                ),
-              ))),
+              (index) =>
+              Center(
+                  child: GridTile(
+                    child: TextButton(
+                      onPressed: () {
+                        String urlBigImg = ConvertLinkToBigImgUrl(imgs[index]);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) =>
+                                    ImageScreen(urlImg: urlBigImg)
+                                )));
+                      },
+                      child: Image.network(imgs[index]),
+                    ),
+                  ))),
     );
+  }
+
+  // Converting url string with small img "_m" to url with big img "_b"
+  String ConvertLinkToBigImgUrl(String url) {
+    String _urlBigImg;
+    _urlBigImg = url.replaceAll("_m", "_b");
+    return _urlBigImg;
   }
 }
 
