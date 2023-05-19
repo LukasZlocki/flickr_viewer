@@ -34,8 +34,17 @@ class _HomePageState extends State<HomePage> {
                     border: OutlineInputBorder(), hintText: 'Enter tag')),
             SizedBox(height: 20),
             ElevatedButton(
-                onPressed: () {
-                  Search(txtController.text);
+                onPressed: () async {
+                    Search(txtController.text);
+                    var done = await Wait();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) =>
+                                ThumbnailScreen(
+                                  tag: txtController.text,
+                                  urlImgList: urlImgList,
+                                ))));
                 },
                 child: Text('Search')),
             ElevatedButton(
@@ -82,6 +91,12 @@ class _HomePageState extends State<HomePage> {
   // clearing main list with links to images
   void ClearMainList() {
     urlImgList.clear();
+  }
+
+  // waiting function'
+  Future<bool> Wait() async {
+    await Future.delayed(const Duration(seconds: 2), (){});
+    return true;
   }
 
   // extracting links to images from list of jsons to List of links
