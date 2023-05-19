@@ -3,7 +3,6 @@ import 'package:flickr_viewer/thumbnail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -35,16 +34,15 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 20),
             ElevatedButton(
                 onPressed: () async {
-                    Search(txtController.text);
-                    var done = await Wait();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) =>
-                                ThumbnailScreen(
-                                  tag: txtController.text,
-                                  urlImgList: urlImgList,
-                                ))));
+                  Search(txtController.text);
+                  var done = await Wait();
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => ThumbnailScreen(
+                                tag: txtController.text,
+                                urlImgList: urlImgList,
+                              ))));
                 },
                 child: Text('Search')),
           ],
@@ -53,12 +51,14 @@ class _HomePageState extends State<HomePage> {
 
   // list with json data with links to pics from uri
   List<dynamic> linksToPics = [];
+
   // list with uri links to pics
   List<String> urlImgList = [];
 
 // search pictures
   void Search(String tag) async {
-    String UrlPart1 = 'https://api.flickr.com/services/feeds/photos_public.gne?tags=';
+    String UrlPart1 =
+        'https://api.flickr.com/services/feeds/photos_public.gne?tags=';
     String UrlPart2 = '&format=json&nojsoncallback=1';
     String UrlFinal = UrlPart1 + tag + UrlPart2;
 
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
 
   // waiting function'
   Future<bool> Wait() async {
-    await Future.delayed(const Duration(seconds: 2), (){});
+    await Future.delayed(const Duration(seconds: 2), () {});
     return true;
   }
 
