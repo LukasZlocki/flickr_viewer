@@ -79,8 +79,14 @@ class _HomePageState extends State<HomePage> {
     extract(linksToPics);
   }
 
+  // clearing main list with links to images
+  void ClearMainList() {
+    urlImgList.clear();
+  }
+
   // extracting links to images from list of jsons to List of links
   void extract(List<dynamic> listToExtract) {
+    ClearMainList();
     for (var i = 0; i < listToExtract.length; i++) {
       final data = linksToPics[i];
       final linkWithWhiteNoise = data['media'];
