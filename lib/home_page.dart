@@ -47,17 +47,6 @@ class _HomePageState extends State<HomePage> {
                                 ))));
                 },
                 child: Text('Search')),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => ThumbnailScreen(
-                                tag: txtController.text,
-                                urlImgList: urlImgList,
-                              ))));
-                },
-                child: Text("Switch Page")),
           ],
         ));
   }
